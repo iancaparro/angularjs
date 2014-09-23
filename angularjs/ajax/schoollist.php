@@ -1,11 +1,6 @@
 <?php 
 require_once '../includes/db.php';
 
-//$status = '%';
-//if(isset($_GET['status'])){
-//$status = $_GET['status'];
-//}
-
 $query = "select id, name, abb, status from schools";
 $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 
@@ -17,4 +12,3 @@ if($result->num_rows > 0) {
 }
 
 echo $json_response = json_encode($arr);
-?>
