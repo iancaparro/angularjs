@@ -1,0 +1,15 @@
+
+	<table class="table-bordered">
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Abbreviation</th>
+			<th>Status</th>
+		</tr>
+		<tr ng-repeat="school in schools">
+			<td><a href="#schooldetail/{{school.id}}" >{{school.id}}</a></td>
+			<td>{{school.name}}</td>
+			<td>{{school.abb}}</td>
+			<td>{{school.status}}</td>
+		</tr>
+	</table>
