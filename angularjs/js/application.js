@@ -36,6 +36,32 @@ app.controller('SchoolDetailController', function($scope, $http, $routeParams) {
 	  
 });
 
+app.controller('SchoolAddController', function($scope, $http) {
+	
+	$scope.formData = {};
+	
+	$scope.processForm = function() {
+		$http({
+	        method  : 'POST',
+	        url     : 'ajax/schooladd.php',
+	        data    : $.param($scope.formData),
+	        headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+	    })
+	        .success(function(data) {
+	            console.log(data);
+
+	            if (!data.success) {
+	                $scope.errorname = data.errors.name;
+	                $scope.errorabbreviation = data.errors.abbreviation;
+	                $scope.errorstatus = data.errors.status;
+	            } else {
+	                $scope.message = data.message;
+	            }
+	        });				
+	};
+
+});
+
 /*
   $scope.addTask = function (task) {
     $http.post("ajax/addTask.php?task="+task).success(function(data){
